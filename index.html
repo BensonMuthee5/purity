@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Empire Dealers</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"> 
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header>
+        <div class="logo">
+            <img src="images/logo.png" alt="Langu Car Dealers Logo">
+        </div>
+        
+        <!-- Menu Icon for Small Screens -->
+        <div class="menu-icon" onclick="toggleMenu()">
+            <i class="fas fa-bars"></i>
+        </div>
+    
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="buy.html">Buy a Car</a></li>
+                <li><a href="sell.html">Sell Your Car</a></li>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+        
+    </header>
+    
+    
+    <section class="hero">
+        <div class="container">
+            <h1>Welcome to CarDeal</h1>
+            <p>Your trusted platform to buy and sell cars effortlessly.</p>
+            <div class="buttons">
+                <a href="buy.html" class="btn btn-explore">Explore Cars</a> 
+                <a href="sell.html" class="btn btn-hero-buy">Sell Your Car</a>
+            </div>
+        </div>
+    </section>
+    
+
+    <section class="featured-cars">
+        <h2>Our Featured Car</h2>
+        <div class="image-container">
+            <img src="images/18.avif" alt="Featured Car">
+        </div>
+    </section>
+    
+    
+    <section class="how-it-works">
+        <h2>Owning a Car is Just Simple</h2>
+        <div class="steps">
+            <div class="step">
+                <i class="fas fa-car"></i>
+                <p>Select Car</p>
+            </div>
+            <div class="step">
+                <i class="fas fa-comments"></i>
+                <p>Inquire</p>
+            </div>
+            <div class="step">
+                <i class="fas fa-credit-card"></i>
+                <p>Pay</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="about">
+        <h2>About Us</h2>
+        <p>Learn more about CarDeal and our commitment to customer satisfaction.</p>
+        <a href="#about-details" class="btn">Read More</a> 
+    </section>
+
+    <section class="contact">
+        <h2>Contact Us</h2>
+    
+        <!-- Contact Form -->
+        <form>
+            <!-- Company Contact Info -->
+            <div class="company-info">
+                <p>
+                    <a href="tel:1234567890">
+                        <i class="fas fa-phone"></i> (123) 456-7890
+                    </a>
+                </p>
+                <p>
+                    <a href="mailto:contact@company.com">
+                        <i class="fas fa-envelope"></i> contact@company.com
+                    </a>
+                </p>
+                <p>
+                    <a href="https://www.google.com/maps?q=company+location" target="_blank">
+                        <i class="fas fa-map-marker-alt"></i> Company Location
+                    </a>
+                </p>
+            </div>
+    
+            <!-- Sender's Contact Form -->
+            <label for="name">Name</label>
+            <input type="text" id="name" placeholder="Your Name" required>
+    
+            <label for="email">Email</label>
+            <input type="email" id="email" placeholder="Your Email" required>
+    
+            <label for="phone">Phone</label>
+            <input type="tel" id="phone" placeholder="Your Phone Number" required>
+    
+            <label for="message">Message</label>
+            <textarea id="message" placeholder="Your Message" required></textarea>
+            
+            <button type="submit">Send Message</button>
+        </form>
+    </section>
+    
+    
+    
+
+    <footer>
+        <div class="social-icons">
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+        </div>
+        <p>Contact us: info@cardeal.com | +1 234 567 890</p>
+        <p>&copy; 2024 CarDeal. All Rights Reserved.</p>
+    
+        <!-- Floating Buttons -->
+        <div class="floating-buttons">
+            <!-- WhatsApp Button -->
+            <a href="https://wa.me/1234567890" target="_blank" class="whatsapp-button">
+                <i class="fab fa-whatsapp"></i> How can we help you?
+            </a>
+    
+            <!-- Return to Top Button -->
+            <div class="back-to-top">&#8593;</div>
+        </div>
+    </footer>
+    
+    <script >
+        // Smooth Scroll for Navigation and Buttons
+// Updated to prevent conflicts with external links
+document.querySelectorAll("nav a, .btn").forEach(anchor => {
+    anchor.addEventListener("click", function (e) {
+        const href = this.getAttribute("href");
+
+        // Prevent default ONLY for internal page links (starting with #)
+        if (href.startsWith("#")) {
+            e.preventDefault();
+            const targetId = href.substring(1);
+            const targetElement = document.getElementById(targetId);
+            if (targetElement) {
+                targetElement.scrollIntoView({ behavior: "smooth" });
+            }
+        }
+    });
+});
+
+// Show/Hide "Back to Top" Button
+window.addEventListener("scroll", function () {
+    const backToTopButton = document.querySelector(".back-to-top");
+    if (window.scrollY > 300) {
+        backToTopButton.classList.add("show");
+    } else {
+        backToTopButton.classList.remove("show");
+    }
+});
+
+// Floating Buttons - Scroll to Top
+document.querySelector(".back-to-top").addEventListener("click", function () {
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+});
+
+// Search Bar Functionality
+const searchButton = document.createElement("button");
+searchButton.id = "search-button";
+searchButton.textContent = "Search";
+if (document.querySelector(".search-bar")) {
+    document.querySelector(".search-bar").appendChild(searchButton);
+}
+
+document.getElementById("search-button")?.addEventListener("click", function () {
+    const query = document.querySelector(".search-bar input").value.toLowerCase();
+    if (!query) {
+        alert("Please enter a search term.");
+        return;
+    }
+
+    // Simulate search logic
+    alert(`Searching for "${query}"... Feature in progress.`);
+    console.log(`User searched for: ${query}`);
+});
+
+// Contact Form Submission
+const contactForm = document.getElementById("contact-form");
+if (contactForm) {
+    contactForm.addEventListener("submit", function (e) {
+        e.preventDefault(); // Prevent form reload
+
+        const name = document.getElementById("name").value.trim();
+        const email = document.getElementById("email").value.trim();
+        const phone = document.getElementById("phone").value.trim();
+        const message = document.getElementById("message").value.trim();
+
+        if (!name || !email || !phone || !message) {
+            alert("All fields are required.");
+            return;
+        }
+
+        if (!validateEmail(email)) {
+            alert("Please enter a valid email address.");
+            return;
+        }
+
+        console.log("Message Submitted:", { name, email, phone, message });
+        alert("Your message has been sent successfully!");
+        e.target.reset();
+    });
+}
+
+// Email Validation
+function validateEmail(email) {
+    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return re.test(email);
+}
+
+// Mobile Menu Toggle
+const menuIcon = document.getElementById("menu-icon");
+const nav = document.querySelector("header nav");
+
+if (menuIcon) {
+    menuIcon.addEventListener("click", () => {
+        nav.classList.toggle("active");
+    });
+}
+
+// Ensure "active" toggle works with nav
+function toggleMenu() {
+    nav.classList.toggle("active");
+}
+
+    </script>
+    
+</body>
+</html>

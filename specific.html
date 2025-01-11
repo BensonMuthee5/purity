@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Details</title>
+   <style>
+    body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+header {
+    background: #35424a;
+    color: #ffffff;
+    padding: 20px 0;
+    text-align: center;
+}
+
+main {
+    padding: 20px;
+}
+
+.car-details {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start; /* Align items to the top */
+}
+
+.main-image {
+    position: relative;
+    width: 60%;
+}
+
+.main-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+
+.maximize-button {
+    position: absolute;
+    bottom: 10px;
+    right: 50px; /* Adjust position as needed */
+    background-color: #35424a;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+    font-size: 18px; /* Adjust size as needed */
+}
+
+.video-button {
+    position: absolute;
+    bottom: 10px;
+    left: 10px; /* Adjust position as needed */
+    background-color: #35424a;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+    font-size: 18px; /* Adjust size as needed */
+}
+
+.scroll-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: #35424a;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 10; /* Ensure it is above other content */
+}
+
+.scroll-button.left {
+    left: 10px; /* Position for left button */
+}
+
+.scroll-button.right {
+    right: 10px; /* Position for right button */
+}
+
+.car-info {
+    width: 35%;
+    margin-left: 20px;
+}
+
+.contact-buttons {
+    margin-top: 20px;
+}
+
+.whatsapp-button, .call-button {
+    background-color: #25D366; /* WhatsApp green */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+.call-button {
+    background-color: #35424a; /* Dark color for call button */
+}
+
+.whatsapp-button:hover {
+    background-color: #128C7E; /* Darker green on hover */
+}
+
+.call-button:hover {
+    background-color: #2c3e50; /* Darker color on hover */
+}
+
+.small-images {
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Center the small images */
+    margin-top: 20px;
+}
+
+.image-container {
+    display: flex;
+    overflow: hidden; /* Hide overflow for scrolling effect */
+    width: 80%; /* Adjust width as needed */
+}
+
+.image-container img {
+    width: 100px; /* Width of small images */
+    height: auto;
+    border-radius: 5px;
+    margin: 0 5px; /* Space between images */
+    cursor: pointer;
+    transition: transform 0.2s; /* Smooth transition for scaling */
+}
+
+.image-container img:hover {
+    transform: scale(1.1); /* Scale up on hover */
+}
+
+.car-details-description {
+    margin-top: 0; /* Remove space between sections */
+    border: none; /* Remove the border if it's visually dividing */
+    box-shadow: none; /* Remove shadow to eliminate division appearance */
+    background: transparent; /* Make the background transparent */
+    padding: 0; /* Remove extra padding */
+}
+
+
+footer {
+    text-align: center;
+    padding: 10px 0;
+    background: #35424a;
+    color: #ffffff;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+   </style>
+</head>
+<body>
+    <header>
+        <h1>Car Details</h1>
+    </header>
+    <main>
+        <div class="car-details">
+            <div class="main-image">
+                <img id="mainCarImage" src="images/1.jpeg" alt="Car Image">
+                <button class="maximize-button" onclick="toggleFullScreen()">⛶</button>
+                <button class="video-button" onclick="startSlideshow()">🎥</button>
+                <button class="scroll-button left" onclick="scrollImages(-1)">&#10094;</button>
+                <button class="scroll-button right" onclick="scrollImages(1)">&#10095;</button>
+            </div>
+            <div class="car-info">
+                <h2 id="carName">Subaru Outback</h2>
+                <p id="carDescription">A reliable and spacious SUV perfect for family trips.</p>
+                <div class="contact-buttons">
+                    <button class="whatsapp-button" onclick="sendWhatsApp()">
+                        <i class="fab fa-whatsapp"></i> Inquire via WhatsApp
+                    </button>
+                    <button class="call-button" onclick="window.location.href='tel:+254700123456'">Call Now</button>
+
+                </div>
+                
+            </div>
+        </div>
+        <div class="small-images">
+            <div class="image-container">
+                <img src="images/1.jpeg" alt="Car Image 1" onclick="changeMainImage('images/1.jpeg', this)">
+                <img src="images/2.jpeg" alt="Car Image 2" onclick="changeMainImage('images/2.jpeg', this)">
+                <img src="images/3.jpeg" alt="Car Image 3" onclick="changeMainImage('images/3.jpeg', this)">
+                <img src="images/4.jpeg" alt="Car Image 4" onclick="changeMainImage('images/4.jpeg', this)">
+                <img src="images/5.jpg" alt="Car Image 5" onclick="changeMainImage('images/5.jpg', this)">
+            </div>
+        </div>
+        <div class="car-details-description">
+            <h3>Price: KES 1,079,998</h3>
+            <h4>Vehicle Details</h4>
+            <p>Condition score: Excellent</p>
+            <p>Year of manufacture: 2011</p>
+            <p>Current Location: Nairobi</p>
+            <p>Availability: Available</p>
+            <p>Drive: 2WD</p>
+            <p>Mileage: 87,591 KM</p>
+            <p>Engine Size: 2490 CC</p>
+            <p>Fuel type: Petrol</p>
+            <p>Horse Power: 203 Hp</p>
+            <p>Transmission: Automatic</p>
+            <p>Torque: 250 Nm</p>
+            <p>Aspiration: Natural</p>
+            <p>Acceleration (0-100 Kph): 9 Secs</p>
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2023 Car Dealership. All rights reserved.</p>
+    </footer>
+
+    <script>
+        let slideshowInterval; // Variable to hold the slideshow interval
+
+// Function to change the main image when a small image is clicked
+function changeMainImage(src, element) {
+    // Change the main image source
+    document.getElementById('mainCarImage').src = src;
+
+    // Remove the highlight from all small images
+    const smallImages = document.querySelectorAll('.image-container img');
+    smallImages.forEach(img => {
+        img.style.border = 'none'; // Remove border
+        img.style.opacity = '0.6'; // Dim all images
+    });
+
+    // Highlight the selected small image
+    element.style.border = '2px solid #35424a'; // Add border to selected image
+    element.style.opacity = '1'; // Make selected image fully visible
+}
+
+// Function to scroll through the small images
+function scrollImages(direction) {
+    const container = document.querySelector('.image-container');
+    const scrollAmount = 100; // Amount to scroll
+    container.scrollBy({
+        left: direction * scrollAmount,
+        behavior: 'smooth' // Smooth scrolling
+    });
+}
+
+// Function to toggle full-screen mode for the main image
+function toggleFullScreen() {
+    const mainImage = document.getElementById('mainCarImage');
+    if (mainImage.requestFullscreen) {
+        mainImage.requestFullscreen();
+    } else if (mainImage.mozRequestFullScreen) { // Firefox
+        mainImage.mozRequestFullScreen();
+    } else if (mainImage.webkitRequestFullscreen) { // Chrome, Safari, and Opera
+        mainImage.webkitRequestFullscreen();
+    } else if (mainImage.msRequestFullscreen) { // IE/Edge
+        mainImage.msRequestFullscreen();
+    }
+}
+
+// Function to minimize the full-screen mode
+document.addEventListener('fullscreenchange', () => {
+    if (!document.fullscreenElement) {
+        // Reset the main image to the first image when exiting full-screen
+        const firstImage = document.querySelector('.image-container img');
+        if (firstImage) {
+            changeMainImage(firstImage.src, firstImage);
+        }
+    }
+});
+
+// Function to send a WhatsApp message
+function sendWhatsApp() {
+    const carName = document.getElementById('carName').innerText;
+    const carLink = window.location.href; // Current page URL
+    const message = `Hi, I'm interested in the ${carName}. Link: ${carLink}`;
+    const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(message)}`;
+    window.open(whatsappUrl, '_blank'); // Open WhatsApp in a new tab
+}
+
+// Function to start the slideshow
+function startSlideshow() {
+    const images = document.querySelectorAll('.image-container img');
+    let currentIndex = 0;
+
+    // Clear any existing interval
+    clearInterval(slideshowInterval);
+
+    // Function to show the next image
+    slideshowInterval = setInterval(() => {
+        currentIndex = (currentIndex + 1) % images.length; // Loop back to the first image
+        changeMainImage(images[currentIndex].src, images[currentIndex]);
+    }, 2000); // Change image every 2 seconds
+}
+
+// Function to stop the slideshow
+function stopSlideshow() {
+    clearInterval(slideshowInterval);
+}
+    </script>
+</body>
+</html>

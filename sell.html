@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sell Your Car - Langu Car Dealers</title>
+    <style>
+        /* General Form Styling */
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Container for the form */
+        .sell-car-form {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Section Headers */
+        .sell-car-form h2 {
+            font-size: 2rem;
+            color: #2DADDC; /* Primary color for headings */
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        /* Labels for the form fields */
+        .sell-car-form label {
+            display: block;
+            font-size: 1.1rem;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        /* Input fields */
+        .sell-car-form input, 
+        .sell-car-form select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1rem;
+            margin-bottom: 20px;
+            box-sizing: border-box;
+            transition: border-color 0.3s ease;
+        }
+
+        .sell-car-form input:focus,
+        .sell-car-form select:focus {
+            border-color: #2DADDC;
+            outline: none;
+        }
+
+        /* File input styling */
+        .sell-car-form input[type="file"] {
+            padding: 5px;
+        }
+
+        /* Button styling */
+        .sell-car-form button {
+            background-color: #2DADDC; /* Main button color */
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            width: 100%;
+            transition: background-color 0.3s ease;
+        }
+
+        .sell-car-form button:hover {
+            background-color: #333; /* Darker blue on hover */
+        }
+        /* Align the checkbox and text in a single line */
+.sell-car-form .terms-container {
+    display: inline-flex; /* Inline flex to make them align in one line */
+    align-items: center; /* Vertically center the checkbox and text */
+    font-size: 1rem;
+    color: #333;
+    margin: 0; /* Remove any unwanted margin */
+}
+
+.sell-car-form .terms-container input[type="checkbox"] {
+    margin-right: 2px; /* Adjust space between the checkbox and text */
+}
+
+.sell-car-form .terms-container span {
+    margin: 0; /* Ensure no margin around the text */
+}
+
+        /* Next Button */
+        .sell-car-form button[type="button"] {
+            background-color: #2DADDC; /* Purple for 'Next' button */
+        }
+
+        .sell-car-form button[type="button"]:hover {
+            background-color: #333; /* Darker blue on hover */
+        }
+
+        /* Responsive Styling */
+        @media (max-width: 768px) {
+            .sell-car-form {
+                padding: 15px;
+            }
+
+            .sell-car-form h2 {
+                font-size: 1.5rem;
+            }
+
+            .sell-car-form button {
+                font-size: 1rem;
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="sell-car-form">
+        <!-- Car Details Section -->
+        <section id="car-details">
+            <h2>Submit Car Details</h2>
+            <form id="car-details-form" action="https://formspree.io/f/your-endpoint" method="POST">
+                <label for="reg-number">Registration Number:*</label>
+                <input type="text" id="reg-number" name="reg-number" required>
+    
+                <label for="make">Make:*</label>
+                <input type="text" id="make" name="make" required>
+    
+                <label for="model">Model:*</label>
+                <input type="text" id="model" name="model" required>
+    
+                <label for="colour">Colour:*</label>
+                <input type="text" id="colour" name="colour" required>
+    
+                <label for="year">Year of Manufacture:*</label>
+                <select id="year" name="year" required>
+                    <!-- Add years dynamically or manually -->
+                    <option value="2023">2023</option>
+                    <option value="2022">2022</option>
+                    <option value="2021">2021</option>
+                </select>
+    
+                <label for="mileage">Mileage:*</label>
+                <input type="number" id="mileage" name="mileage" required>
+    
+                <label for="mileage-unit">Mileage Unit:*</label>
+                <select id="mileage-unit" name="mileage-unit" required>
+                    <option value="km">KM</option>
+                    <option value="miles">Miles</option>
+                </select>
+    
+                <label for="accident-history">Has Accident History:*</label>
+                <select id="accident-history" name="accident-history" required>
+                    <option value="no">No</option>
+                    <option value="yes">Yes</option>
+                </select>
+    
+                <label for="price">Asking Price:*</label>
+                <input type="text" id="price" name="price" required>
+    
+                <label for="location">Location:*</label>
+                <input type="text" id="location" name="location" required>
+    
+                <!-- Hidden field for email -->
+                <input type="hidden" name="_replyto" value="owner@example.com">
+    
+                <!-- Next Button -->
+                <button type="button" onclick="showContactDetails()">Next</button>
+            </form>
+        </section>
+    
+        <!-- Contact Details Section (Hidden Initially) -->
+        <section id="contact-details" style="display:none;">
+            <h2>Contact Details</h2>
+            <form id="contact-details-form" action="https://formspree.io/f/your-endpoint" method="POST">
+                <label for="first-name">First Name:*</label>
+                <input type="text" id="first-name" name="first-name" required>
+    
+                <label for="last-name">Last Name:*</label>
+                <input type="text" id="last-name" name="last-name" required>
+    
+                <label for="email">Email:*</label>
+                <input type="email" id="email" name="email" required>
+    
+                <label for="phone">Phone:*</label>
+                <input type="tel" id="phone" name="phone" required>
+    
+                <label for="id-number">ID Number:*</label>
+                <input type="text" id="id-number" name="id-number" required>
+    
+                <label for="contact-method">Preferred Contact Method:*</label>
+                <select id="contact-method" name="contact-method" required>
+                    <option value="phone">Phone</option>
+                    <option value="email">Email</option>
+                    <option value="whatsapp">WhatsApp</option>
+                </select>
+    
+                <!-- File Upload for ID Photos -->
+                <label for="id-photo-front">ID Photo (Front):*</label>
+                <input type="file" id="id-photo-front" name="id-photo-front" required>
+    
+                <label for="id-photo-back">ID Photo (Back):*</label>
+                <input type="file" id="id-photo-back" name="id-photo-back" required>
+    
+                <!-- Terms and Conditions Checkbox -->
+                <label class="terms-container">
+                    <input type="checkbox" name="terms" required>
+                    <span>I agree to the terms and conditions.</span>
+                </label>
+    
+                <!-- Submit Button -->
+                <button type="submit">Submit</button>
+            </form>
+        </section>
+    </div>
+    
+
+    <script>
+        // Show Contact Details Section
+        function showContactDetails() {
+            // Validate Car Details Form
+            const carDetailsForm = document.getElementById('car-details-form');
+            if (!carDetailsForm.checkValidity()) {
+                alert('Please fill in all required fields before proceeding.');
+                carDetailsForm.reportValidity();
+                return;
+            }
+
+            // Hide Car Details and Show Contact Details
+            document.getElementById('car-details').style.display = 'none';
+            document.getElementById('contact-details').style.display = 'block';
+        }
+
+        // Handle Form Submission
+        const contactDetailsForm = document.getElementById('contact-details-form');
+        contactDetailsForm.addEventListener('submit', (e) => {
+            e.preventDefault(); // Prevent default form submission
+            alert('Your details have been submitted successfully!');
+            // Additional submission logic can go here (e.g., sending data to a server)
+        });
+
+        // Populate Year Dropdown Dynamically
+        const yearDropdown = document.getElementById('year');
+        const currentYear = new Date().getFullYear();
+        for (let year = currentYear; year >= 1990; year--) {
+            const option = document.createElement('option');
+            option.value = year;
+            option.textContent = year;
+            yearDropdown.appendChild(option);
+        }
+
+        // Preview ID Photos
+        document.querySelectorAll('input[type="file"]').forEach((input) => {
+            input.addEventListener('change', (e) => {
+                const file = e.target.files[0];
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = function (event) {
+                        alert(`Preview of ${file.name}: ${event.target.result.substring(0, 100)}...`); // Replace this with an actual preview element
+                    };
+                    reader.readAsDataURL(file);
+                }
+            });
+        });
+    </script>
+</body>
+</html>
