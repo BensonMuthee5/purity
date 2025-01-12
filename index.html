@@ -12,7 +12,7 @@
     <!-- Header Section -->
     <header>
         <div class="logo">
-            <img src="images/logo.png" alt="Langu Car Dealers Logo">
+            <img src="" alt="Langu Car Dealers Logo">
         </div>
         
         <!-- Menu Icon for Small Screens -->
@@ -71,17 +71,16 @@
         </div>
     </section>
 
-    <section class="about">
+    <section id="about" class="about">
         <h2>About Us</h2>
         <p>Learn more about CarDeal and our commitment to customer satisfaction.</p>
         <a href="#about-details" class="btn">Read More</a> 
     </section>
-
-    <section class="contact">
-        <h2>Contact Us</h2>
     
+    <section id="contact" class="contact">
+        <h2>Contact Us</h2>
         <!-- Contact Form -->
-        <form>
+        <form action="submit-car.php" method="POST" enctype="multipart/form-data">
             <!-- Company Contact Info -->
             <div class="company-info">
                 <p>
@@ -100,27 +99,25 @@
                     </a>
                 </p>
             </div>
-    
+        
             <!-- Sender's Contact Form -->
             <label for="name">Name</label>
-            <input type="text" id="name" placeholder="Your Name" required>
+            <input type="text" id="name" name="name" placeholder="Your Name" required>
     
             <label for="email">Email</label>
-            <input type="email" id="email" placeholder="Your Email" required>
+            <input type="email" id="email" name="email" placeholder="Your Email" required>
     
             <label for="phone">Phone</label>
-            <input type="tel" id="phone" placeholder="Your Phone Number" required>
+            <input type="tel" id="phone" name="phone" placeholder="Your Phone Number" required>
     
             <label for="message">Message</label>
-            <textarea id="message" placeholder="Your Message" required></textarea>
+            <textarea id="message" name="message" placeholder="Your Message" required></textarea>
             
             <button type="submit">Send Message</button>
         </form>
     </section>
     
     
-    
-
     <footer>
         <div class="social-icons">
             <a href="#"><i class="fab fa-facebook"></i></a>
@@ -144,7 +141,6 @@
     
     <script >
         // Smooth Scroll for Navigation and Buttons
-// Updated to prevent conflicts with external links
 document.querySelectorAll("nav a, .btn").forEach(anchor => {
     anchor.addEventListener("click", function (e) {
         const href = this.getAttribute("href");
